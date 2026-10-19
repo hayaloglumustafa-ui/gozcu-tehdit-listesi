@@ -132,6 +132,18 @@ def main():
     signed_path = os.path.join(args.out_dir, "threat_list.signed.json")
     plain_path = os.path.join(args.out_dir, "threat_list.json")
 
+    # Güvenlik: gizli anahtar, depodaki açık anahtarla (uygulamaya gömülü olanla) eşleşmeli.
+    # Eşleşmezse her çalıştırmada hata verilir; uygulamanın reddedeceği bir liste asla yayınlanmaz.
+    key = load_key()
+    pub_path = os.path.join(args.out_dir, "public_key.pem")
+    if os.path.exists(pub_path):
+        with open(pub_path, "rb") as f:
+            expected = serialization.load_pem_public_key(f.read())
+        fmt = (serialization.Encoding.DER, serialization.PublicFormat.SubjectPublicKeyInfo)
+        if key.public_key().public_bytes(*fmt) != expected.public_bytes(*fmt):
+            sys.exit("HATA: GOZCU_SIGNING_KEY, public_key.pem ile eşleşmiyor; doğru anahtarı ekleyin")
+    print("İmza anahtarı doğru.")
+
     entries = convert(fetch_source(args.source))
     if len(entries) < MIN_ENTRIES:
         sys.exit(f"HATA: yalnızca {len(entries)} kayıt bulundu; kaynak bozuk olabilir, yayınlanmadı")
@@ -161,7 +173,6 @@ def main():
     }
     payload_bytes = json.dumps(payload, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
 
-    key = load_key()
     signature = key.sign(payload_bytes, ec.ECDSA(hashes.SHA256()))  # DER biçimi (Java ile uyumlu)
     key.public_key().verify(signature, payload_bytes, ec.ECDSA(hashes.SHA256()))  # kendi kendini sına
 
