@@ -1,10 +1,10 @@
 {
  "schema": 1,
- "version": 2026101922,
- "updated": "2026-10-19",
+ "version": 2026102108,
+ "updated": "2026-10-21",
  "source": "Echap stalkerware-indicators",
  "license": "CC BY 4.0",
- "entries_sha256": "8a71935f58c5ed9b63780f0682a6ccdf099ad7cdf24549ceab34d7ece53fcfd9",
+ "entries_sha256": "e9a6f49386a1c18dd915307f04b0de753a8d1822e6a859429e10d7048a438b2a",
  "entries": [
   {
    "type": "cert_sha1",
@@ -1086,6 +1086,13 @@
   },
   {
    "type": "cert_sha1",
+   "value": "5B2265CD0F004A70A0DE7483A5DD450A051F4108",
+   "name": "Stalkerware",
+   "category": "stalkerware",
+   "severity": "critical"
+  },
+  {
+   "type": "cert_sha1",
    "value": "5C5EF3DFE98B02251A6EC82609F22A092562AFEE",
    "name": "iMonitorSpy",
    "category": "stalkerware",
@@ -1683,6 +1690,13 @@
    "type": "cert_sha1",
    "value": "85F12B25CEB58B8376F83209D8D128841132DC51",
    "name": "MobileTrackerFree",
+   "category": "stalkerware",
+   "severity": "critical"
+  },
+  {
+   "type": "cert_sha1",
+   "value": "86238EC6DF27DD0886B701D73397E2DA99C74066",
+   "name": "EasyPhoneTrack",
    "category": "stalkerware",
    "severity": "critical"
   },
@@ -3783,6 +3797,13 @@
    "type": "package",
    "value": "com.ajygpxjy.bnthtjou",
    "name": "SpyKontrol",
+   "category": "stalkerware",
+   "severity": "critical"
+  },
+  {
+   "type": "package",
+   "value": "com.aleghe.hatra",
+   "name": "EasyPhoneTrack",
    "category": "stalkerware",
    "severity": "critical"
   },
@@ -6121,6 +6142,13 @@
    "type": "package",
    "value": "com.shadyspy.monitor",
    "name": "ShadySpy",
+   "category": "stalkerware",
+   "severity": "critical"
+  },
+  {
+   "type": "package",
+   "value": "com.simundkarten.g4.cc.starter",
+   "name": "Stalkerware",
    "category": "stalkerware",
    "severity": "critical"
   },
